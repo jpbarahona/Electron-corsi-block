@@ -110,69 +110,52 @@ let template = [{
   }]
 }]
 
-function addUpdateMenuItems (items, position) {
-  if (process.mas) return
+module.exports = {
+  template: template,
+  findReopenMenuItem: function findReopenMenuItem () {
+                        const menu = Menu.getApplicationMenu()
+                        if (!menu) return
 
-  const version = electron.app.getVersion()
-  let updateItems = [{
-    label: `Version ${version}`,
-    enabled: false
-  }, {
-    label: 'Checking for Update',
-    enabled: false,
-    key: 'checkingForUpdate'
-  }, {
-    label: 'Check for Update',
-    visible: false,
-    key: 'checkForUpdate',
-    click: function () {
-      require('electron').autoUpdater.checkForUpdates()
-    }
-  }, {
-    label: 'Restart and Install Update',
-    enabled: true,
-    visible: false,
-    key: 'restartToUpdate',
-    click: function () {
-      require('electron').autoUpdater.quitAndInstall()
-    }
-  }]
+                        let reopenMenuItem
+                        menu.items.forEach(function (item) {
+                          if (item.submenu) {
+                            item.submenu.items.forEach(function (item) {
+                              if (item.key === 'reopenMenuItem') {
+                                reopenMenuItem = item
+                              }
+                            })
+                          }
+                        })
+                        return reopenMenuItem
+                      },
+  addUpdateMenuItems: function addUpdateMenuItems (items, position) {
+                        if (process.mas) return
 
-  items.splice.apply(items, [position, 0].concat(updateItems))
-}
+                        const version = electron.app.getVersion()
+                        let updateItems = [{
+                          label: `Version ${version}`,
+                          enabled: false
+                        }, {
+                          label: 'Checking for Update',
+                          enabled: false,
+                          key: 'checkingForUpdate'
+                        }, {
+                          label: 'Check for Update',
+                          visible: false,
+                          key: 'checkForUpdate',
+                          click: function () {
+                            require('electron').autoUpdater.checkForUpdates()
+                          }
+                        }, {
+                          label: 'Restart and Install Update',
+                          enabled: true,
+                          visible: false,
+                          key: 'restartToUpdate',
+                          click: function () {
+                            require('electron').autoUpdater.quitAndInstall()
+                          }
+                        }]
 
-function findReopenMenuItem () {
-  const menu = Menu.getApplicationMenu()
-  if (!menu) return
-
-  let reopenMenuItem
-  menu.items.forEach(function (item) {
-    if (item.submenu) {
-      item.submenu.items.forEach(function (item) {
-        if (item.key === 'reopenMenuItem') {
-          reopenMenuItem = item
-        }
-      })
-    }
-  })
-  return reopenMenuItem
-}
-
-  // Window menu.
-  template[3].submenu.push({
-    type: 'separator'
-  }, {
-    label: 'Bring All to Front',
-    role: 'front'
-  })
-
-  addUpdateMenuItems(template[0].submenu, 1)
-}
-
-module "menu" {
-  exports = {
-      findReopenMenuItem: findReopenMenuItem(),
-      addUpdateMenuItems: addUpdateMenuItems(items, position),
-      template: template,
-  }
+                        items.splice.apply(items, [position, 0].concat(updateItems))
+                      }
 }
