@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Corsi block-tapping test</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1, maximum-scale=1, user-scalable=0">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Corsi block-tapping test"> <!-- https://gist.github.com/tfausak/2222823 -->
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,700" type="text/css">
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <script type="text/x-handlebars" data-template-name="application">
+    <div class="container">
+      {{outlet}}
+    </div>
+  </script>
+
+  <script type="text/x-handlebars" data-template-name="intro">
+    <div class="row row-intro">
+      <div class="col-sm-10 col-sm-offset-1">
+        <h1>Tervetuloa tekemään muistitestiä</h1>
+        <p>Muistitesti on suunniteltu testaamaan koehenkilön avaruudellista lyhyen keston työmuistia. Testissä on yhdeksän neliötä, joista koehenkilölle osoitetaan valittu määrä neliöitä. Koehenkilön tulee tämän jälkeen osoittaa samat neliöt samassa järjestyksessä, jotka hänelle on aiemmin osoitettu.</p>
+      </div>
+    </div>
+    <div class="row row-start-test">
+      <div class="col-sm-6 col-sm-offset-3">
+        <button type="button" class="btn btn-lg btn-primary">Aloita testi</button>
+      </div>
+    </div>
+  </script>
+
+  <script type="text/x-handlebars" data-template-name="pre">
+    <div class="row row-intro row-start-test-intro">
+      <div class="col-sm-10 col-sm-offset-1">
+        <h1>Muistitesti - taso {{level}}</h1>
+        <p><strong>Ohje:</strong> Seuraavassa testissä sinulle näytetään <strong>{{level}}</strong> {{multiply level 'neliö'}}.<br>Valitse neliöt tämän jälkeen samassa järjestyksessä<br>kuin ne on sinulle esitetty.</p>
+      </div>
+      <div class="col-sm-10 col-sm-offset-1 small-btns">
+        <button id="small-btn-1" type="button" class="btn btn-lg btn-primary btn-flash">1</button>
+        <button id="small-btn-2" type="button" class="btn btn-lg btn-primary">2</button>
+        <button id="small-btn-3" type="button" class="btn btn-lg btn-primary">3</button>
+        <button id="small-btn-4" type="button" class="btn btn-lg btn-primary">4</button>
+        <button id="small-btn-5" type="button" class="btn btn-lg btn-primary">5</button>
+        <button id="small-btn-6" type="button" class="btn btn-lg btn-primary">6</button>
+        <button id="small-btn-7" type="button" class="btn btn-lg btn-primary">7</button>
+        <button id="small-btn-8" type="button" class="btn btn-lg btn-primary">8</button>
+        <button id="small-btn-9" type="button" class="btn btn-lg btn-primary">9</button>
+      </div>
+    </div>
+    <div class="row row-start-test">
+      <div class="col-sm-6 col-sm-offset-3">
+        <button type="button" class="btn btn-lg btn-primary">Suorita testi</button>
+      </div>
+    </div>
+  </script>
+
+  <script type="text/x-handlebars" data-template-name="test">
+    <div class="row row-test">
+      <div class="col-sm-6 col-sm-offset-1 test-btns">
+        <div class="screen"></div>
+        <button id="btn-1" type="button" class="btn btn-lg btn-primary">1</button>
+        <button id="btn-2" type="button" class="btn btn-lg btn-primary">2</button>
+        <button id="btn-3" type="button" class="btn btn-lg btn-primary">3</button>
+        <button id="btn-4" type="button" class="btn btn-lg btn-primary">4</button>
+        <button id="btn-5" type="button" class="btn btn-lg btn-primary">5</button>
+        <button id="btn-6" type="button" class="btn btn-lg btn-primary">6</button>
+        <button id="btn-7" type="button" class="btn btn-lg btn-primary">7</button>
+        <button id="btn-8" type="button" class="btn btn-lg btn-primary">8</button>
+        <button id="btn-9" type="button" class="btn btn-lg btn-primary">9</button>
+      </div>
+      <div class="col-sm-10 col-sm-offset-1 message-column">
+        <h2 class="message"></h2>
+      </div>
+    </div>
+  </script>
+
+  <script type="text/x-handlebars" data-template-name="result">
+    <div class="row row-intro">
+      <div class="col-sm-10 col-sm-offset-1">
+        <h1>Testi päättyi</h1>
+        <p>Kiitos osallistumisestasi testiin.<br>Suoritit onnistuneesti muistitestin tason <strong>{{level}}</strong>.</p>
+      </div>
+    </div>
+    <div class="row row-start-test">
+      <div class="col-sm-3 col-sm-offset-3">
+        <button type="button" class="btn btn-lg btn-primary">Lopeta testi</button>
+      </div>
+    </div>
+  </script>
+
+  <!--
+  <script src="js/libs/jquery.js"></script>
+  <script src='js/libs/lodash.js'></script>
+  <script src='js/libs/fastclick.js'></script>
+  <script src="js/libs/handlebars.js"></script>
+  <script src="js/libs/ember.js"></script>
+  <script src="js/libs/ember-data.js"></script>
+  -->
+  <script src="js/libs.min.js"></script>
+  <script src="js/app.min.js"></script>
+</body>
+</html>
