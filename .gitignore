@@ -1,4 +1,9 @@
 node_modules
 .DS_Store
 src/.DS_Store
-
+electron-quick-start-darwin-x64
+OurCodeWorld-win32-x64
+QA
+*/.DS_Store
+*/*/.DS_Store
+*/*/*/.DS_Store

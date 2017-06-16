@@ -21,13 +21,13 @@
   <script type="text/x-handlebars" data-template-name="intro">
     <div class="row row-intro">
       <div class="col-sm-10 col-sm-offset-1">
-        <h1>Tervetuloa tekemään muistitestiä</h1>
-        <p>Muistitesti on suunniteltu testaamaan koehenkilön avaruudellista lyhyen keston työmuistia. Testissä on yhdeksän neliötä, joista koehenkilölle osoitetaan valittu määrä neliöitä. Koehenkilön tulee tämän jälkeen osoittaa samat neliöt samassa järjestyksessä, jotka hänelle on aiemmin osoitettu.</p>
+        <h1>Corsi block tasting test</h1>
+        <p>Prueba de memoria está diseñado para poner a prueba la memoria de trabajo espacial del sujeto en un corto período. La prueba consta de nueve metros cuadrados, de los cuales los sujetos fueron asignados al número seleccionado de cuadrados. El sujeto entonces será asignado los mismos cuadrados del mismo orden, que se ha demostrado previamente.</p>
       </div>
     </div>
     <div class="row row-start-test">
       <div class="col-sm-6 col-sm-offset-3">
-        <button type="button" class="btn btn-lg btn-primary">Aloita testi</button>
+        <button type="button" class="btn btn-lg btn-primary">Iniciar prueba</button>
       </div>
     </div>
   </script>
@@ -35,8 +35,8 @@
   <script type="text/x-handlebars" data-template-name="pre">
     <div class="row row-intro row-start-test-intro">
       <div class="col-sm-10 col-sm-offset-1">
-        <h1>Muistitesti - taso {{level}}</h1>
-        <p><strong>Ohje:</strong> Seuraavassa testissä sinulle näytetään <strong>{{level}}</strong> {{multiply level 'neliö'}}.<br>Valitse neliöt tämän jälkeen samassa järjestyksessä<br>kuin ne on sinulle esitetty.</p>
+        <h1>Prueba de Memoria - Nivel {{level}}</h1>
+        <p><strong>Nota:</strong> En la siguiente prueba, se le presentará <strong>{{level}}</strong> {{multiply level 'cuadrado'}}.<br>Haga clic en las casillas después de este mismo orden<br>a medida que se presentan a usted.</p>
       </div>
       <div class="col-sm-10 col-sm-offset-1 small-btns">
         <button id="small-btn-1" type="button" class="btn btn-lg btn-primary btn-flash">1</button>
@@ -52,7 +52,7 @@
     </div>
     <div class="row row-start-test">
       <div class="col-sm-6 col-sm-offset-3">
-        <button type="button" class="btn btn-lg btn-primary">Suorita testi</button>
+        <button type="button" class="btn btn-lg btn-primary">Nivel {{level}}</button>
       </div>
     </div>
   </script>
@@ -80,13 +80,14 @@
   <script type="text/x-handlebars" data-template-name="result">
     <div class="row row-intro">
       <div class="col-sm-10 col-sm-offset-1">
-        <h1>Testi päättyi</h1>
-        <p>Kiitos osallistumisestasi testiin.<br>Suoritit onnistuneesti muistitestin tason <strong>{{level}}</strong>.</p>
+        <h1>Prueba Finalizada</h1>
+        <p>Gracias por participar en la prueba.
+        </p>
       </div>
     </div>
     <div class="row row-start-test">
       <div class="col-sm-6 col-sm-offset-3">
-        <button type="button" class="btn btn-lg btn-primary">Lopeta testi</button>
+        <button type="button" class="btn btn-lg btn-primary">Finalizar</button>
       </div>
     </div>
   </script>

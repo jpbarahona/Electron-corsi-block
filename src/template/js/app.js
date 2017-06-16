@@ -13,6 +13,7 @@ App = Ember.Application.create();
 
 App.Router.map(function() {
   this.route('intro');
+  this.route("form");
   this.route('pre');
   this.route('test');
   this.route('result');
@@ -28,6 +29,12 @@ App.IntroRoute = Em.Route.extend({
   model: function() {
     return this.store.find('corsi', 1);
   }
+});
+
+App.FormRoute = Em.Route.extend({
+    model: function() {
+        return this.store.find("corsi", 1)
+    }
 });
 
 App.PreRoute = Em.Route.extend({
@@ -60,11 +67,29 @@ App.IntroView = Em.View.extend({
     });
   },
   touchEnd: function(evt) {
-    if(evt.target.nodeName === 'BUTTON') this.get('controller').transitionToRoute('pre');
+    e.target.nodeName === "BUTTON" && this.get("controller").transitionToRoute("form")
   },
   click: function(evt) {
-    if(evt.target.nodeName === 'BUTTON') this.get('controller').transitionToRoute('pre');
+    e.target.nodeName === "BUTTON" && this.get("controller").transitionToRoute("form")
   }
+});
+
+App.FormView = Em.View.extend({
+    didInsertElement: function() {
+        var e = this.get("controller");
+        e.setProperties({
+            level: 1,
+            clicks: 0,
+            tapErrors: 0,
+            errCount: 0
+        })
+    },
+    touchEnd: function(e) {
+        e.target.nodeName === "BUTTON" && this.get("controller").transitionToRoute("pre")
+    },
+    click: function(e) {
+        e.target.nodeName === "BUTTON" && this.get("controller").transitionToRoute("pre")
+    }
 });
 
 App.PreView = Em.View.extend({
@@ -147,7 +172,7 @@ App.TestView = Em.View.extend({
       iteration = 1,
       that = this;
 
-    $('.message').html('<strong>Odota</strong> ja <strong>seuraa</strong> mitkä neliöt välähtävät.');
+    $(".message").html("<strong>Esperar</strong> y <strong>seguir</strong> qué cuadrados parpadean.");
 
     var flashInterval = setInterval(function() {
       var $btn = that.$('#btn-' + iteration);
@@ -162,7 +187,7 @@ App.TestView = Em.View.extend({
         setTimeout(function() {
           that.$('.test-btns').toggleClass('animation play');
           that.$('.screen').addClass('hidden');
-          $('.message').html('<strong>Kosketa</strong> välähtäneitä neliöitä samassa järjestyksessä.');
+          $(".message").html("<strong>Tocar</strong> los cuadrados en el mismo orden.");
         }, 2000);
       }
 
@@ -217,11 +242,11 @@ App.TestView = Em.View.extend({
       that.$('.error').toggleClass('error btn-danger');
 
       if (controller.get('tapErrors') === 0) {
-        $('.message').html('Vastasit tehtävään <strong>oikein</strong>.');
+        $(".message").html("Ha respondido <strong>correctamente</strong>.");
       } else if (controller.get('errCount') === 0) {
-        $('.message').html('Vastasit tehtävään <strong>väärin</strong>. Yritä uudelleen.');
+        $(".message").html("Ha respondido a la tarea <strong> incorrectamente</ strong>. Por favor, inténtelo de nuevo.");
       } else {
-        $('.message').html('Vastasit tehtävään <strong>väärin</strong>. Testi päättyy.');
+        $(".message").html("Ha respondido a la tarea <strong> incorrectamente</ strong>. La prueba termina.");
       }
 
       setTimeout(function() {
