@@ -20,6 +20,8 @@
     "electron": "~1.6.2"
   },
   "dependencies": {
-    "electron-packager": "^8.7.1"
+    "csv-write-stream": "^2.0.0",
+    "electron-packager": "^8.7.1",
+    "fs": "0.0.1-security"
   }
 }
